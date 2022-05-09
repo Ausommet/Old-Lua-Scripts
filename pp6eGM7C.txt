@@ -1,0 +1,310 @@
+return {
+	["Silence Squad Camo"] = {
+		337129807,
+		337130336
+	},
+	["Big Smoke Camo"] = {
+		593699904,
+		415701837
+	},
+	["Shenanigans Mod Camo"] = {
+		588584241,
+		159218882
+	},
+	["Blood Camo"] = {
+		215316057,
+		215316131
+	},
+	["Bright Red Camo"] = {
+		568952825,
+		466961351
+	},
+	["Apocalypse Rising Bright Pink"] = {
+		467600288,
+		467600429
+	},
+	["Apocalypse Rising Galaxy Blue"] = {
+		510178412,
+		510178635
+	},
+	["Red/Black/White Camo"] = {
+		473519774,
+		473519972
+	},
+	["Red/White Camo"] = {
+		472480924,
+		472323288
+	},
+	["Blue/Black (Splattered paint)"] = {
+		467173965,
+		467174397
+	},
+	["Galaxy Red Camo"] = {
+		467531032,
+		467531149
+	},
+	["Green Camo"] = {
+		593700583,
+		466869006
+	},
+	["Pink Gusmanak"] = {
+		174147656,
+		174147930
+	},
+	["Yellow Zolar"] = {
+		229993750,
+		222311494
+	},
+	["Blue Zolar"] = {
+		198624220,
+		198624035
+	},
+	["Red ZolarKeth"] = {
+		184800610,
+		184800783
+	},
+	["Purple Zolar"] = {
+		187543757,
+		187543760
+	},
+	["Gusmanak Ice"] = {
+		242698915,
+		242698963
+	},
+	["Gusmanak Green/Gray"] = {
+		233505839,
+		233505875
+	},
+	["Light Blue Camo"] = {
+		621320757,
+		621321071
+	},
+	["Gusmanak Tan/Beige"] = {
+		525673005,
+		525673313
+	},
+	["Light pink Camo"] = {
+		608942892,
+		608173166
+	},
+	["DS Uniform (red space)"] = {
+		772679941,
+		815303433
+	},
+	["Vapor"] = {
+		929357729,
+		929360510
+	},
+	["Somnum"] = {
+		929374243,
+		929375454
+	},
+	["Retaliation"] = {
+		929368028,
+		929368521
+	},
+	["DS Unifor"] = {
+		2122445354,
+		2122447731
+	},
+	["Honeybager"] = {
+		929373244,
+		929373657
+	},
+	["Diaamnd Old Uniform"] = {
+		929353581,
+		929354110
+	},
+	["Oof! Uniform"] = {
+		929349688,
+		929350308
+	},
+	["D-3 Uniform"] = {
+		929345322,
+		929345896
+	},
+	["Euphoric Uniform"] = {
+		929356714,
+		929357125
+	},
+	["Mist Uniform"] = {
+		929355529,
+		929356057
+	},
+	["Cunning Biscuit Uniform"] = {
+		659265006,
+		659265396
+	},
+	["TanqR Uniform"] = {
+		929370461,
+		929370906
+	},
+	["Hayha Revisited"] = {
+		649122210,
+		649122414
+	},
+	["Oblivian Uniform"] = {
+		457164559,
+		457164804
+	},
+	["Royal Era Uniform"] = {
+		397516365,
+		397516464
+	},
+	["H_Squad Uniform"] = {
+		454654104,
+		454654195
+	},
+	["Swarm Squad Uniform"] = {
+		435063632,
+		435063707
+	},
+	["D-3 Squad Uniform"] = {
+		413185337,
+		413185478
+	},
+	["Termination Uniform"] = {
+		399810161,
+		399810060
+	},
+	["Diaamnd Uniform"] = {
+		397517096,
+		397517173
+	},
+	["D-3 Uniform"] = {
+		397516801,
+		397516931
+	},
+	["Gus Rainbow"] = {
+		218966904,
+		218968778
+	},
+	["Winter Camo"] = {
+		4528536166,
+		4528536651
+	},
+	["Red splash"] = {
+		201524314,
+		201524555
+	},
+	["Blatto uniform"] = {
+		337128174,
+		337128215
+	},
+	["Canadian Armed Forces Uniform"] = {
+		239576236,
+		239574835
+	},
+	["Green Skeleton"] = {
+		688551640,
+		404609258
+	},
+	["Purple KS"] = {
+		415680101,
+		415680101
+	},
+	["Gus Dark Grey/Green"] = {
+		237129536,
+		195009358
+	},
+	["Gus Original"] = {
+		201064170,
+		201064197
+	},
+	["Gus Red/Dark Blue"] = {
+		180686042,
+		180754089
+	},
+	["Gus Purple/Cyan"] = {
+		221085596,
+		238763451
+	},
+	["Gus Yellow/Black"] = {
+		163062897,
+		185545016
+	},
+	["Gus Purple/Black"] = {
+		168825224,
+		168825280
+	},
+	["Gus Orange/Black"] = {
+		166690305,
+		166690653
+	},
+	["Paradox Uniform"] = {
+		1799543924,
+		1745660911
+	},
+	["DIAAMND dmndOG OFFICIAL Old Uniform "] = {
+		874977426,
+		874927167
+	},
+	["DIAAMND dmndOG OFFICIAL Old Uniform (green)"] = {
+		880411509,
+		880412103
+	},
+	["DIAAMND dmndOG OFFICIAL Old Uniform (purple)"] = {
+		880414013,
+		880414613
+	},
+	["DIAAMND dmndOG OFFICIAL Old Uniform (yellow)"] = {
+		880410307,
+		880410864
+	},
+	["TanqR Uniform (Dark Blue)"] = {
+		863735908,
+		863736115
+	},
+	["TanqR Uniform (Black)"] = {
+		1273422971,
+		1273426526
+	},
+	["TanqR Uniform (White)"] = {
+		1273423290,
+		1273426873
+	},
+	["TanqR Uniform (Red)"] = {
+		1273423680,
+		1273427710
+	},
+	["TanqR Uniform (Purple)"] = {
+		1273423998,
+		1273427917
+	},
+	["TanqR Uniform (Green)"] = {
+		1273424160,
+		1273428132
+	},
+	["TanqR Uniform (Light Blue)"] = {
+		1273424336,
+		1273428372
+	},
+	["TanqR Uniform (Pink)"] = {
+		1273425294,
+		1273428921
+	},
+	["Tanqr Christmas Jumper (Green and Black)"] = {
+		4472633019,
+		4472637694
+	},
+	["Tanqr Christmas Jumper (Red and Black)"] = {
+		4472617967,
+		4472617431
+	},
+	["Tanqr Christmas Jumper (Light Blue and White)"] = {
+		4472577026,
+		4472576077
+	},
+	["Tanqr Christmas Jumper (Red and White)"] = {
+		4472609821,
+		4472610584
+	},
+	["Tanqr Christmas Jumper (Green and Red)"] = {
+		4472600497,
+		4472593833
+	},
+	["Tanqr Christmas Jumper (Blue and Black)"] = {
+		4472705661,
+		4472706341
+	}
+}
