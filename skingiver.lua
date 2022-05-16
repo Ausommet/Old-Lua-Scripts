@@ -17,10 +17,8 @@ local Themes_Ui = {
 
 local Players = game:GetService("Players")
 
-
 local Client = Players.LocalPlayer
 
---players
 local playerstab = window.category("Players")
 local playerssection = playerstab.section("Players")
 local skin_color1 = nil
@@ -44,8 +42,6 @@ end
 playerssection.dropdown(Client.Name, function(player)
     SelectedPlayer = player
 end, {}, true, true, false)
-
---map
 
 playerssection.textbox("Skin Color", function(value)
     skin_color1 = setvalue(tonumber(value), 1, 65, .5)
