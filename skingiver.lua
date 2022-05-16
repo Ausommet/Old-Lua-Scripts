@@ -68,7 +68,7 @@ end, "Texture ID")
 playerssection.textbox("Skin Slot", function(value)
     slot_number = setvalue(tonumber(value), 1, 99, .5)
     slot = "skin".. tostring(slot_number)
-end, "Skin")
+end, "Skin Slot")
 
 playerssection.button("Give Skin", function()
     local plr = game.Players[SelectedPlayer].playerstats.skins[slot]
