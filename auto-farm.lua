@@ -17,6 +17,8 @@ local Main = UI.New({
 local Players = game:GetService("Players")
 local Client = Players.LocalPlayer.Name
 local RunService = game:GetService("RunService")
+local Imput = game:GetService("UserInputService")
+local Plr = game.Players.LocalPlayer
 
 Main.Slider({
     Text = "Attack Distance",
@@ -33,7 +35,7 @@ if distance == nil then
 end
 
 Main.Slider({
-    Text = "APS (Attack per second)",
+    Text = "Attack Speed",
     Callback = function(Value)
             atkspeed = 1 / Value 
         end,
@@ -71,16 +73,18 @@ Main.Toggle({
   Main.Slider({
     Text = "Teleport Distance",
     Callback = function(Value)
-            bring_distance = Value
+            tpd = Value
         end,
     Min = 100,
-    Max = 500,
+    Max = 1500,
     Def = 100,
 })
 
-if bring_distance == nil then
-    bring_distance = 100
+if tpd == nil then
+    tpd = 100
 end
+local speed = 100
+local bodyvelocityenabled = true -- set this to false if you are getting kicked
 
 Main.Toggle({
     Text= 'Auto Farm',
@@ -94,17 +98,36 @@ Main.Toggle({
             for Index, Value in next, workspace.Mobs:GetChildren() do
                 RunService.Heartbeat:Wait(0)
                 if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') then
-                    if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < bring_distance then
-                        while Value['Humanoid'].Health > 0 do
+                    if (Value['HumanoidRootPart'].Position - workspace[Client]['HumanoidRootPart'].Position).magnitude < tpd then
+                        while workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') and Value['Humanoid'].Health > 0  do
                             RunService.Heartbeat:Wait(0)
-                            if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Value.HumanoidRootPart.CFrame + Vector3.new(0,-30,0) 
+                            newpos = Value.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
+                            local Chr = Plr.Character
+                            if Chr ~= nil then
+                                local ts = game:GetService("TweenService")
+                                local char = game.Players.LocalPlayer.Character
+                                local hm = char.HumanoidRootPart
+                                local dist = (hm.Position - Value.HumanoidRootPart.Position).magnitude
+                                local tweenspeed = dist/tonumber(speed)
+                                local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
+                               local tp = {CFrame = CFrame.new(newpos)}
+                               local tween =  ts:Create(hm, ti, tp)
+                               tween:Play()
+                                if bodyvelocityenabled == true then
+                                    local bv = Instance.new("BodyVelocity")
+                                    bv.MaxForce = Vector3.new(100000,100000,100000)
+                                    bv.Velocity = Vector3.new(0,0,0)
+                                    bv.Parent = hm
+                                    bv:Destroy()
+                                    wait(tonumber(tweenspeed))
+                                    tween:Cancel()
+                                end
+                            end
                             end
                         end
                     end
                 end
             end
-        end
-    end,
+        end,
     autofarm = false
 })
