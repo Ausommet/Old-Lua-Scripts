@@ -1,11 +1,12 @@
+repeat wait() until game:IsLoaded()
 --this is a work in progress :D
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local UI = Material.Load({
-    Title = "",
+    Title = "SBO:R | Ausommet",
     Style = 3,
     SizeX = 300,
-    SizeY = 200,
+    SizeY = 300,
     Theme = "Light",
 })
 
@@ -30,6 +31,19 @@ Main.Slider({
 if distance == nil then
     distance = 100
 end
+
+Main.Slider({
+    Text = "APS (Attack per second)",
+    Callback = function(Value)
+            atkspeed = 1 / Value 
+        end,
+    Min = 1,
+    Max = 5,
+    Def = 1,
+})
+if atkspeed == nil then
+    atkspeed = 1 
+end
 Main.Toggle({
     Text = 'Kill Aura',
     Callback = function(Value)
@@ -40,11 +54,12 @@ Main.Toggle({
       end
       while killaura do
         for Index, Value in next, workspace.Mobs:GetChildren() do
-            RunService.Heartbeat:Wait(0)
+            RunService.Heartbeat:Wait(atkspeed / 2)
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
               if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < distance then 
               game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
+              RunService.Heartbeat:Wait(atkspeed / 2)
               end
           end  
       end
@@ -54,12 +69,12 @@ Main.Toggle({
   })
 
   Main.Slider({
-    Text = "Auto Farm Teleport Distance",
+    Text = "Teleport Distance",
     Callback = function(Value)
             bring_distance = Value
         end,
     Min = 100,
-    Max = 500,
+    Max = 1500,
     Def = 100,
 })
 
