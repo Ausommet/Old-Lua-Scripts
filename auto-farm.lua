@@ -74,7 +74,7 @@ Main.Toggle({
             bring_distance = Value
         end,
     Min = 100,
-    Max = 1500,
+    Max = 500,
     Def = 100,
 })
 
