@@ -23,7 +23,7 @@ Main.Slider({
             distance = Value
         end,
     Min = 100,
-    Max = 5000,
+    Max = 500,
     Def = 100,
 })
 
@@ -59,7 +59,7 @@ Main.Toggle({
             bring_distance = Value
         end,
     Min = 100,
-    Max = 5000,
+    Max = 1500,
     Def = 100,
 })
 
