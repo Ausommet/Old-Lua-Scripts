@@ -43,8 +43,8 @@ Main.Toggle({
             RunService.Heartbeat:Wait(0)
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
               if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < distance then 
-              game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle) -- this is what attacks
-              game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm") --this makes it so you dont need to equip your sword
+              game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
+              game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
               end
           end  
       end
