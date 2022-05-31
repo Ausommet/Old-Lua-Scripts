@@ -1,5 +1,5 @@
-repeat wait() until game:IsLoaded()
 --this is a work in progress :D
+repeat wait() until game:IsLoaded()
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local UI = Material.Load({
@@ -20,32 +20,7 @@ local RunService = game:GetService("RunService")
 local Imput = game:GetService("UserInputService")
 local Plr = game.Players.LocalPlayer
 
-Main.Slider({
-    Text = "Attack Distance",
-    Callback = function(Value)
-            distance = Value
-        end,
-    Min = 100,
-    Max = 500,
-    Def = 100,
-})
-
-if distance == nil then
-    distance = 100
-end
-
-Main.Slider({
-    Text = "Attack Speed",
-    Callback = function(Value)
-            atkspeed = 1 / Value 
-        end,
-    Min = 1,
-    Max = 5,
-    Def = 1,
-})
-if atkspeed == nil then
-    atkspeed = 1 
-end
+--Kill Aura Section
 Main.Toggle({
     Text = 'Kill Aura',
     Callback = function(Value)
@@ -71,18 +46,33 @@ Main.Toggle({
   })
 
   Main.Slider({
-    Text = "Teleport Distance",
+    Text = "Attack Distance",
     Callback = function(Value)
-            tpd = Value
+            distance = Value
         end,
     Min = 100,
-    Max = 1500,
+    Max = 500,
     Def = 100,
 })
 
-if tpd == nil then
-    tpd = 100
+if distance == nil then
+    distance = 100
 end
+
+Main.Slider({
+    Text = "Attack Speed",
+    Callback = function(Value)
+            atkspeed = 1 / Value 
+        end,
+    Min = 1,
+    Max = 5,
+    Def = 1,
+})
+if atkspeed == nil then
+    atkspeed = 1 
+end
+
+--Auto Farm Section
 local speed = 100
 local bodyvelocityenabled = true -- set this to false if you are getting kicked
 
@@ -131,3 +121,19 @@ Main.Toggle({
         end,
     autofarm = false
 })
+
+Main.Slider({
+    Text = "Teleport Distance",
+    Callback = function(Value)
+            tpd = Value
+        end,
+    Min = 100,
+    Max = 1500,
+    Def = 100,
+})
+
+if tpd == nil then
+    tpd = 100
+end
+
+--the end :D
