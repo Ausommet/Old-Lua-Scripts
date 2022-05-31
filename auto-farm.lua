@@ -54,7 +54,7 @@ Main.Toggle({
   })
 
   Main.Slider({
-    Text = "Bring Distance",
+    Text = "Auto Farm Teleport Distance",
     Callback = function(Value)
             bring_distance = Value
         end,
