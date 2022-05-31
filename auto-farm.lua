@@ -91,7 +91,7 @@ Main.Toggle({
                     if (Value['HumanoidRootPart'].Position - workspace[Client]['HumanoidRootPart'].Position).magnitude < tpd then
                         while workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') and Value['Humanoid'].Health > 0  do
                             RunService.Heartbeat:Wait(0)
-                            newpos = Value.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
+                            newpos = Value.HumanoidRootPart.Position + Vector3.new(0,-30,0) 
                             local Chr = Plr.Character
                             if Chr ~= nil then
                                 local ts = game:GetService("TweenService")
