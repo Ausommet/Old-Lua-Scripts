@@ -1,13 +1,44 @@
---this is a work in progress :D
 repeat wait() until game:IsLoaded()
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local UI = Material.Load({
-    Title = "SBO:R | Ausommet",
+    Title = "SBO:R | By Ausommet",
     Style = 3,
     SizeX = 300,
     SizeY = 300,
-    Theme = "Light",
+    Theme = "Jester",
+    ColorOverrides = {
+        MainFrame = Color3.fromRGB(9,49,69),
+		Minimise = Color3.fromRGB(255,106,0),
+		MinimiseAccent = Color3.fromRGB(147,59,0),
+		Maximise = Color3.fromRGB(25,255,0),
+		MaximiseAccent = Color3.fromRGB(0,255,110),
+		NavBar = Color3.fromRGB(60,100,120),
+		NavBarAccent = Color3.fromRGB(9,49,69),
+		NavBarInvert = Color3.fromRGB(255,255,255),
+		TitleBar = Color3.fromRGB(60,100,120),
+		TitleBarAccent = Color3.fromRGB(255,255,255),
+		Overlay = Color3.fromRGB(255,255,255),
+		Banner = Color3.fromRGB(9,49,69),
+		BannerAccent = Color3.fromRGB(255,255,255),
+		Content = Color3.fromRGB(255,255,255),
+		Button = Color3.fromRGB(255,255,255),
+		ButtonAccent = Color3.fromRGB(9,49,69),
+		ChipSet = Color3.fromRGB(255,255,255),
+		ChipSetAccent = Color3.fromRGB(9,49,69),
+		DataTable = Color3.fromRGB(255,255,255),
+		DataTableAccent = Color3.fromRGB(9,49,69),
+		Slider = Color3.fromRGB(9,49,69),
+		SliderAccent = Color3.fromRGB(255,255,255),
+		Toggle = Color3.fromRGB(255,255,255),
+		ToggleAccent = Color3.fromRGB(9,49,69),
+		Dropdown = Color3.fromRGB(9,49,69),
+		DropdownAccent = Color3.fromRGB(255,255,255),
+		ColorPicker = Color3.fromRGB(9,49,69),
+		ColorPickerAccent = Color3.fromRGB(255,255,255),
+		TextField = Color3.fromRGB(255,255,255),
+		TextFieldAccent = Color3.fromRGB(255,255,255),
+    }
 })
 
 local Main = UI.New({
@@ -73,8 +104,24 @@ if atkspeed == nil then
 end
 
 --Auto Farm Section
+local Mobs = {}
 local speed = 100
-local bodyvelocityenabled = true -- set this to false if you are getting kicked
+local bodyvelocityenabled = true
+
+local function Closest() 
+    local Closest = {math.huge} 
+        for Index, Value in next, workspace.Mobs:GetChildren() do 
+            if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') and Value['MOBBEBEB'].Value == Mob and Value['Humanoid'].Health > 0  then 
+                local lc = game.Players.LocalPlayer.Character
+                local hm = lc.HumanoidRootPart
+                local Distance = (hm.Position - Value.HumanoidRootPart.Position).magnitude
+                if Distance < Closest[1] then 
+                    Closest = {Distance, Value} 
+                end
+            end
+        end
+    return Closest[2]   
+end
 
 Main.Toggle({
     Text= 'Auto Farm',
@@ -85,55 +132,54 @@ Main.Toggle({
           autofarm = false
         end
         while autofarm do
-            for Index, Value in next, workspace.Mobs:GetChildren() do
-                RunService.Heartbeat:Wait(0)
-                if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') then
-                    if (Value['HumanoidRootPart'].Position - workspace[Client]['HumanoidRootPart'].Position).magnitude < tpd then
-                        while workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') and Value['Humanoid'].Health > 0  do
-                            RunService.Heartbeat:Wait(0)
-                            newpos = Value.HumanoidRootPart.Position + Vector3.new(0,-30,0) 
-                            local Chr = Plr.Character
-                            if Chr ~= nil then
-                                local ts = game:GetService("TweenService")
-                                local char = game.Players.LocalPlayer.Character
-                                local hm = char.HumanoidRootPart
-                                local dist = (hm.Position - Value.HumanoidRootPart.Position).magnitude
-                                local tweenspeed = dist/tonumber(speed)
-                                local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
-                               local tp = {CFrame = CFrame.new(newpos)}
-                               local tween =  ts:Create(hm, ti, tp)
-                               tween:Play()
-                                if bodyvelocityenabled == true then
-                                    local bv = Instance.new("BodyVelocity")
-                                    bv.MaxForce = Vector3.new(100000,100000,100000)
-                                    bv.Velocity = Vector3.new(0,0,0)
-                                    bv.Parent = hm
-                                    bv:Destroy()
-                                    wait(tonumber(tweenspeed))
-                                    tween:Cancel()
-                                end
-                            end
-                            end
-                        end
-                    end
+            RunService.Heartbeat:Wait(0)
+            target = Closest()
+            newpos = target.HumanoidRootPart.Position + Vector3.new(0,-30,0) 
+            local Chr = Plr.Character
+            if Chr ~= nil then
+                local ts = game:GetService("TweenService")
+                local char = game.Players.LocalPlayer.Character
+                local hm = char.HumanoidRootPart
+                local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
+                local tweenspeed = dist/tonumber(speed)
+                local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
+                local tp = {CFrame = CFrame.new(newpos)}
+                local tween =  ts:Create(hm, ti, tp)
+                tween:Play()
+                if bodyvelocityenabled == true then
+                    local bv = Instance.new("BodyVelocity")
+                    bv.MaxForce = Vector3.new(100000,100000,100000)
+                    bv.Velocity = Vector3.new(0,0,0)
+                    bv.Parent = hm
+                    bv:Destroy()
+                    wait(tonumber(tweenspeed))
+                tween:Cancel()
                 end
             end
-        end,
+        end
+    end,
     autofarm = false
 })
-
-Main.Slider({
-    Text = "Teleport Distance",
-    Callback = function(Value)
-            tpd = Value
-        end,
-    Min = 100,
-    Max = 1500,
-    Def = 100,
-})
-
-if tpd == nil then
-    tpd = 100
+function Mob_Update()
+    for i,v in next, workspace.Mobs:GetChildren() do
+        if workspace.Mobs:FindFirstChild(v.Name) and workspace.Mobs[v.Name]:FindFirstChild('HumanoidRootPart') and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') and not table.find(Mobs, v['MOBBEBEB'].Value) then
+         table.insert(Mobs ,v['MOBBEBEB'].Value)
+        end
+    end
 end
+Mob_Update()
 
---the end :D
+Main.Dropdown({
+    Text = "Select Mob",
+    Callback = function(Value)
+            Mob = Value
+            if Mob == Value then
+                Change_Mob = false
+            else
+                Change_Mob = true
+            end
+        end,
+
+        Options = Mobs
+
+    })
