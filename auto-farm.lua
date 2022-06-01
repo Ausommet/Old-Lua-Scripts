@@ -64,7 +64,7 @@ Main.Toggle({
         for Index, Value in next, workspace.Mobs:GetChildren() do
             RunService.Heartbeat:Wait(atkspeed / 2)
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
-              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < (distance *10) then 
+              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < distance  then 
                 game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
                 game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               RunService.Heartbeat:Wait(atkspeed / 2)
@@ -104,7 +104,6 @@ if atkspeed == nil then
 end
 
 --Auto Farm Section
-local speed = 100
 local bodyvelocityenabled = true
 local Chr = Plr.Character
 local ts = game:GetService("TweenService")
@@ -171,6 +170,20 @@ Main.Toggle({
 end,
 autofarm = false
 })
+
+Main.Slider({
+    Text = "Tween Speed",
+    Callback = function(Value)
+           local speed = Value
+        end,
+    Min = 50,
+    Max = 100,
+    Def = 50,
+})
+if speed == nil then
+    speed = 50 
+end
+
 local Select = Main.Dropdown({
     Text = "Select Mob",
     Callback = function(Value)
