@@ -110,6 +110,8 @@ local Chr = Plr.Character
 local ts = game:GetService("TweenService")
 local char = game.Players.LocalPlayer.Character
 local hm = char.HumanoidRootPart
+local lc = game.Players.LocalPlayer.Character
+local hm = lc.HumanoidRootPart
 local Mobs = {}
 
 local function Mob_Update()
@@ -124,8 +126,6 @@ local function Closest()
     local Closest = {math.huge} 
         for Index, Value in next, workspace.Mobs:GetChildren() do 
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') and workspace.Mobs[Value.Name]:FindFirstChild('HumanoidRootPart') and Value['MOBBEBEB'].Value == Mob and Value['Humanoid'].Health > 0  then 
-                local lc = game.Players.LocalPlayer.Character
-                local hm = lc.HumanoidRootPart
                 local Distance = (hm.Position - Value.HumanoidRootPart.Position).magnitude
                 if Distance < Closest[1] then 
                     Closest = {Distance, Value} 
