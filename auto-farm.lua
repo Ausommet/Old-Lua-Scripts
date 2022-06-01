@@ -64,7 +64,7 @@ Main.Toggle({
         for Index, Value in next, workspace.Mobs:GetChildren() do
             RunService.Heartbeat:Wait(atkspeed / 2)
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
-              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < distance then 
+              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < (distance *10) then 
                 game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
                 game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               RunService.Heartbeat:Wait(atkspeed / 2)
@@ -81,9 +81,9 @@ Main.Toggle({
     Callback = function(Value)
             distance = Value
         end,
-    Min = 100,
-    Max = 250,
-    Def = 100,
+    Min = 10,
+    Max = 25,
+    Def = 10,
 })
 
 if distance == nil then
@@ -96,7 +96,7 @@ Main.Slider({
             atkspeed = 1 / Value 
         end,
     Min = 1,
-    Max = 5,
+    Max = 3,
     Def = 1,
 })
 if atkspeed == nil then
@@ -146,10 +146,11 @@ Main.Toggle({
         while autofarm do
             RunService.Heartbeat:Wait(0)
             target = Closest()
-            newpos = target.HumanoidRootPart.Position + Vector3.new(0,-30,0) 
-            if newpos == nil then 
+            if target == nil then
                 newpos = hm.Position
-            end
+            else
+            newpos = target.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
+        end
             if Chr ~= nil then
                 local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
                 local tweenspeed = dist/tonumber(speed)
