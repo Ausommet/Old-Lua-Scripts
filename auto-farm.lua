@@ -104,9 +104,17 @@ if atkspeed == nil then
 end
 
 --Auto Farm Section
-local Mobs = {}
 local speed = 100
 local bodyvelocityenabled = true
+local Mobs = {}
+
+local function Mob_Update()
+    for i, v in pairs(workspace.Mobs:GetChildren()) do
+        if not table.find(Mobs, v['MOBBEBEB'].Value) and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') then
+            table.insert(Mobs, v['MOBBEBEB'].Value)
+        end
+    end
+end
 
 local function Closest() 
     local Closest = {math.huge} 
@@ -160,11 +168,8 @@ Main.Toggle({
     end,
     autofarm = false
 })
-for i,v in next, workspace.Mobs:GetChildren() do
-if workspace.Mobs:FindFirstChild(v.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head')  and workspace.Mobs[v.Name]:FindFirstChild('HumanoidRootPart') and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') and not table.find(Mobs, v['MOBBEBEB'].Value) then
-    table.insert(Mobs ,v['MOBBEBEB'].Value)
-end
-end
+
+Mob_Update()
 
 Main.Dropdown({
     Text = "Select Mob",
@@ -178,5 +183,4 @@ Main.Dropdown({
         end,
 
         Options = Mobs
-
     })
