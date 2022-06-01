@@ -160,14 +160,11 @@ Main.Toggle({
     end,
     autofarm = false
 })
-function Mob_Update()
-    for i,v in next, workspace.Mobs:GetChildren() do
-        if workspace.Mobs:FindFirstChild(v.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head')  and workspace.Mobs[v.Name]:FindFirstChild('HumanoidRootPart') and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') and not table.find(Mobs, v['MOBBEBEB'].Value) then
-         table.insert(Mobs ,v['MOBBEBEB'].Value)
-        end
-    end
+for i,v in next, workspace.Mobs:GetChildren() do
+if workspace.Mobs:FindFirstChild(v.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head')  and workspace.Mobs[v.Name]:FindFirstChild('HumanoidRootPart') and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') and not table.find(Mobs, v['MOBBEBEB'].Value) then
+    table.insert(Mobs ,v['MOBBEBEB'].Value)
 end
-Mob_Update()
+end
 
 Main.Dropdown({
     Text = "Select Mob",
