@@ -147,30 +147,28 @@ Main.Toggle({
             RunService.Heartbeat:Wait(0)
             target = Closest()
             if target == nil then
-                newpos = hm.Position
+                target = hm.Position
             else
             newpos = target.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
         end
-            if Chr ~= nil then
-                local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
-                local tweenspeed = dist/tonumber(speed)
-                local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
-                local tp = {CFrame = CFrame.new(newpos)}
-                local tween =  ts:Create(hm, ti, tp)
-                tween:Play()
-                if bodyvelocityenabled == true then
-                    local bv = Instance.new("BodyVelocity")
-                    bv.MaxForce = Vector3.new(100000,100000,100000)
-                    bv.Velocity = Vector3.new(0,0,0)
-                    bv.Parent = hm
-                    bv:Destroy()
-                    wait(tonumber(tweenspeed))
-                tween:Cancel()
-                end
-            end
+        local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
+        local tweenspeed = dist/tonumber(speed)
+        local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
+        local tp = {CFrame = CFrame.new(newpos)}
+        local tween =  ts:Create(hm, ti, tp)
+        tween:Play()
+        if bodyvelocityenabled == true then
+            local bv = Instance.new("BodyVelocity")
+            bv.MaxForce = Vector3.new(100000,100000,100000)
+            bv.Velocity = Vector3.new(0,0,0)
+            bv.Parent = hm
+            bv:Destroy()
+            wait(tonumber(tweenspeed))
+            tween:Cancel()
         end
-    end,
-    autofarm = false
+    end
+end,
+autofarm = false
 })
 local Select = Main.Dropdown({
     Text = "Select Mob",
