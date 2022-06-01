@@ -22,8 +22,8 @@ local UI = Material.Load({
 		Banner = Color3.fromRGB(9,49,69),
 		BannerAccent = Color3.fromRGB(255,255,255),
 		Content = Color3.fromRGB(255,255,255),
-		Button = Color3.fromRGB(255,255,255),
-		ButtonAccent = Color3.fromRGB(9,49,69),
+		Button = Color3.fromRGB(9,49,69), 
+		ButtonAccent = Color3.fromRGB(255,255,255),
 		ChipSet = Color3.fromRGB(255,255,255),
 		ChipSetAccent = Color3.fromRGB(9,49,69),
 		DataTable = Color3.fromRGB(255,255,255),
@@ -110,7 +110,7 @@ local Mobs = {}
 
 local function Mob_Update()
     for i, v in pairs(workspace.Mobs:GetChildren()) do
-        if not table.find(Mobs, v['MOBBEBEB'].Value) and workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB') then
+        if workspace.Mobs[v.Name]:FindFirstChild('MOBBEBEB')  and not table.find(Mobs, v['MOBBEBEB'].Value) then
             table.insert(Mobs, v['MOBBEBEB'].Value)
         end
     end
@@ -168,10 +168,7 @@ Main.Toggle({
     end,
     autofarm = false
 })
-
-Mob_Update()
-
-Main.Dropdown({
+local Select = Main.Dropdown({
     Text = "Select Mob",
     Callback = function(Value)
             Mob = Value
@@ -181,6 +178,13 @@ Main.Dropdown({
                 Change_Mob = true
             end
         end,
+        Options = {}
+    })
 
-        Options = Mobs
+    Main.Button({
+        Text = 'Refresh Mobs List',
+        Callback = function()
+            Mob_Update()
+            Select:SetOptions(Mobs)
+        end,
     })
