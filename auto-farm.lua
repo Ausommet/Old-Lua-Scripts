@@ -176,11 +176,6 @@ local Select = Main.Dropdown({
     Text = "Select Mob",
     Callback = function(Value)
             Mob = Value
-            if Mob == Value then
-                Change_Mob = false
-            else
-                Change_Mob = true
-            end
         end,
         Options = {}
     })
