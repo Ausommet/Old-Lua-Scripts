@@ -147,10 +147,11 @@ Main.Toggle({
             RunService.Heartbeat:Wait(0)
             target = Closest()
             if target == nil then
-                target = hm.Position
+                target = lc
+                newpos = target.HumanoidRootPart.Position
             else
-            newpos = target.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
-        end
+                newpos = target.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
+            end
         local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
         local tweenspeed = dist/tonumber(speed)
         local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
