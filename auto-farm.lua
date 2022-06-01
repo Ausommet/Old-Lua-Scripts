@@ -65,8 +65,8 @@ Main.Toggle({
             RunService.Heartbeat:Wait(atkspeed / 2)
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
               if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < distance then 
-              game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
-              game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
+                game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
+                game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               RunService.Heartbeat:Wait(atkspeed / 2)
               end
           end  
@@ -82,7 +82,7 @@ Main.Toggle({
             distance = Value
         end,
     Min = 100,
-    Max = 500,
+    Max = 250,
     Def = 100,
 })
 
@@ -106,6 +106,10 @@ end
 --Auto Farm Section
 local speed = 100
 local bodyvelocityenabled = true
+local Chr = Plr.Character
+local ts = game:GetService("TweenService")
+local char = game.Players.LocalPlayer.Character
+local hm = char.HumanoidRootPart
 local Mobs = {}
 
 local function Mob_Update()
@@ -143,11 +147,10 @@ Main.Toggle({
             RunService.Heartbeat:Wait(0)
             target = Closest()
             newpos = target.HumanoidRootPart.Position + Vector3.new(0,-30,0) 
-            local Chr = Plr.Character
+            if newpos == nil then 
+                newpos = hm.Position
+            end
             if Chr ~= nil then
-                local ts = game:GetService("TweenService")
-                local char = game.Players.LocalPlayer.Character
-                local hm = char.HumanoidRootPart
                 local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
                 local tweenspeed = dist/tonumber(speed)
                 local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
