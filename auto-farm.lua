@@ -217,8 +217,8 @@ Main.Toggle({
             RunService.Heartbeat:Wait(0)
             target = Closest()
             if target == nil then
-                target = lc
-                newpos = target.HumanoidRootPart.Position
+                target = workspace[Client]
+                newpos = workspace[Client]['Head'].Position
             else
                 newpos = target.HumanoidRootPart.Position + Vector3.new(0,-35,0) 
             end
@@ -229,7 +229,6 @@ Main.Toggle({
         local tween =  ts:Create(hm, ti, tp)
         tween:Play()
         wait(tonumber(tweenspeed))
-        tween:Cancel()
         end
 end,
 autofarm = false
