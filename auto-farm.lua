@@ -208,8 +208,10 @@ Main.Toggle({
     Callback = function(Value)
         if Value then
           autofarm = true
+          Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = true
         else
           autofarm = false
+          Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
         end
         while autofarm do
             RunService.Heartbeat:Wait(0)
