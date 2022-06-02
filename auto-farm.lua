@@ -5,7 +5,7 @@ local UI = Material.Load({
     Title = "「SBO:R」 | By Ausommet",
     Style = 3,
     SizeX = 300,
-    SizeY = 400,
+    SizeY = 300,
     Theme = "Jester",
     ColorOverrides = {
         MainFrame = Color3.fromRGB(9,49,69),
@@ -140,45 +140,17 @@ Main.Toggle({
       while killaura do
         for Index, Value in next, workspace.Mobs:GetChildren() do
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
-              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < (distance * 10)  then 
+              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < 100  then 
                 game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
                 game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
-              RunService.Heartbeat:Wait(1 / tonumber(atkspeed))
               end
-          end  
+          end
+          RunService.Heartbeat:Wait(1)  
       end
   end
     end,
     killaura = false
   })
-
-  Main.Slider({
-    Text = "Attack Distance",
-    Callback = function(Value)
-            distance = Value
-        end,
-    Min = 10,
-    Max = 25,
-    Def = 10,
-})
-
-if distance == nil then
-    distance = 10
-end
-
-Main.Slider({
-    Text = "Attack Speed",
-    Callback = function(Value)
-            atkspeed = 1 / Value 
-        end,
-    Min = 1,
-    Max = 3,
-    Def = 1,
-})
-if atkspeed == nil then
-    atkspeed = 1 
-end
-
 --Auto Farm Section
 
 local function Mob_Update()
@@ -207,7 +179,7 @@ local function to(newpos)
     if Chr ~= nil then
         local ts = game:GetService("TweenService")
         local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
-        local tweenspeed = dist/tonumber(speed)
+        local tweenspeed = dist/50
         local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
         local tp = {CFrame = CFrame.new(newpos)}
         local tween =  ts:Create(hm, ti, tp)
@@ -250,19 +222,6 @@ end,
 autofarm = false
 })
 
-Main.Slider({
-    Text = "Tween Speed",
-    Callback = function(Value)
-           local speed = Value
-        end,
-    Min = 50,
-    Max = 100,
-    Def = 50,
-})
-if speed == nil then
-    speed = 50 
-end
-
 local Select = Main.Dropdown({
     Text = "Select Mob",
     Callback = function(Value)
@@ -280,13 +239,6 @@ local Select = Main.Dropdown({
     })
     
 -- Staff Detection // Re-join On kick
-
-getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-        game:GetService("TeleportService"):Teleport(game.PlaceId)
-    end
-end)
-
     Players.PlayerAdded:Connect(function(Plr)
         if Plr:GetRankInGroup(5683480) > 1 then 
                         Teleport()
