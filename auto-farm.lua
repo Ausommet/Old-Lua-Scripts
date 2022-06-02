@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local UI = Material.Load({
-    Title = "SBO:R | By Ausommet",
+    Title = "「SBO:R」 | By Ausommet",
     Style = 3,
     SizeX = 300,
     SizeY = 400,
