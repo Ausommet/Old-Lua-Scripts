@@ -283,9 +283,7 @@ local Select = Main.Dropdown({
             if Value then 
                 for Index, Value in next, Players:GetPlayers() do 
                     if Value ~= Player and Value:GetRankInGroup(5683480) > 1 then 
-                        while wait() do 
                             Teleport()
-                                end
                             end
                         end
                     end
