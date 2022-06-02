@@ -203,32 +203,49 @@ local function Closest()
     return Closest[2]   
 end
 
-Main.Toggle({
-    Text= 'Auto Farm',
-    Callback = function(Value)
-        if Value then
-          autofarm = true
-          Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = true
-        else
-          autofarm = false
-          Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
-        end
-        while autofarm do
-            RunService.Heartbeat:Wait(0)
-            target = Closest()
-            if target == nil then
-                target = workspace[Client]
-                newpos = workspace[Client]['HumanoidRootPart'].Position
-            else
-                newpos = target.HumanoidRootPart.Position + Vector3.new(0,-35,0) 
-            end
+local function to(newpos)
+    local Chr = Plr.Character
+    if Chr ~= nil then
+        local ts = game:GetService("TweenService")
         local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
         local tweenspeed = dist/tonumber(speed)
         local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
         local tp = {CFrame = CFrame.new(newpos)}
         local tween =  ts:Create(hm, ti, tp)
         tween:Play()
+        local bv = Instance.new("BodyVelocity")
+        bv.MaxForce = Vector3.new(100000,100000,100000)
+        bv.Velocity = Vector3.new(0,0,0)
+        bv.Parent = hm
+        bv:Destroy()
         wait(tonumber(tweenspeed))
+    end
+end
+ff = Instance.new("Part", game.Workspace)
+
+function Float()
+ff.CFrame = hm.CFrame + Vector3.new(0,-3,0)
+ff.Anchored = true
+ff.Size = Vector3.new(1,0.01,1)
+end
+
+
+Main.Toggle({
+    Text= 'Auto Farm',
+    Callback = function(Value)
+        if Value then
+            autofarm = true
+          else
+            autofarm = false
+          end
+        while autofarm do
+            RunService.Heartbeat:Wait(0)
+            target = Closest()
+            if target ~= nil then
+                newpos = target.HumanoidRootPart.Position+ Vector3.new(0,-30,0) 
+                pcall(function() to(newpos) end)
+            end
+            Float()
         end
 end,
 autofarm = false
@@ -264,6 +281,13 @@ local Select = Main.Dropdown({
     })
     
 -- Staff Detection // Re-join On kick
+
+getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+    if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+        game:GetService("TeleportService"):Teleport(game.PlaceId)
+    end
+end)
+
     Players.PlayerAdded:Connect(function(Plr)
         if Plr:GetRankInGroup(5683480) > 1 then 
                         Teleport()
@@ -281,18 +305,5 @@ local Select = Main.Dropdown({
                         end
                     end
             end,
-            staffdetection = false
+            Value = true
         })
-        Main.Toggle({
-            Text= 'Auto Rejoin',
-            Callback = function(Value)
-                if Value then 
-                    getgenv().rejoin = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                        if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                            game:GetService("TeleportService"):Teleport(game.PlaceId)
-                        end
-                    end)
-                end
-                end,
-                autorejoin = false
-            })
