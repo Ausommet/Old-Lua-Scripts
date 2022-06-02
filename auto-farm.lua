@@ -218,7 +218,7 @@ Main.Toggle({
             target = Closest()
             if target == nil then
                 target = workspace[Client]
-                newpos = workspace[Client]['Head'].Position
+                newpos = workspace[Client]['HumanoidRootPart'].Position
             else
                 newpos = target.HumanoidRootPart.Position + Vector3.new(0,-35,0) 
             end
