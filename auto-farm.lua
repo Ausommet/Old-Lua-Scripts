@@ -51,7 +51,6 @@ local Client = Players.LocalPlayer.Name
 local RunService = game:GetService("RunService")
 local Imput = game:GetService("UserInputService")
 local Plr = game.Players.LocalPlayer
-local bodyvelocityenabled = true
 local Chr = Plr.Character
 local ts = game:GetService("TweenService")
 local lc = game.Players.LocalPlayer.Character
@@ -227,16 +226,9 @@ Main.Toggle({
         local tp = {CFrame = CFrame.new(newpos)}
         local tween =  ts:Create(hm, ti, tp)
         tween:Play()
-        if bodyvelocityenabled == true then
-            local bv = Instance.new("BodyVelocity")
-            bv.MaxForce = Vector3.new(100000,100000,100000)
-            bv.Velocity = Vector3.new(0,0,0)
-            bv.Parent = hm
-            bv:Destroy()
-            wait(tonumber(tweenspeed))
-            tween:Cancel()
+        wait(tonumber(tweenspeed))
+        tween:Cancel()
         end
-    end
 end,
 autofarm = false
 })
@@ -272,7 +264,7 @@ local Select = Main.Dropdown({
     
 -- Staff Detection // Re-join On kick
     Players.PlayerAdded:Connect(function(Plr)
-        if Settings.StaffDetection and Plr:GetRankInGroup(5683480) > 1 then 
+        if Plr:GetRankInGroup(5683480) > 1 then 
                         Teleport()
                     end
                 end)
