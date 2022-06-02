@@ -81,9 +81,9 @@ Main.Toggle({
     Callback = function(Value)
             distance = Value
         end,
-    Min = 10,
-    Max = 25,
-    Def = 10,
+    Min = 100,
+    Max = 250,
+    Def = 100,
 })
 
 if distance == nil then
@@ -149,7 +149,7 @@ Main.Toggle({
                 target = lc
                 newpos = target.HumanoidRootPart.Position
             else
-                newpos = target.HumanoidRootPart.Position + Vector3.new(0,-40,0) 
+                newpos = target.HumanoidRootPart.Position + Vector3.new(0,-35,0) 
             end
         local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
         local tweenspeed = dist/tonumber(speed)
