@@ -179,7 +179,7 @@ local function to(newpos)
     if Chr ~= nil then
         local ts = game:GetService("TweenService")
         local dist = (hm.Position - target.HumanoidRootPart.Position).magnitude
-        local tweenspeed = dist/50
+        local tweenspeed = dist / 30
         local ti = TweenInfo.new(tonumber(tweenspeed), Enum.EasingStyle.Linear)
         local tp = {CFrame = CFrame.new(newpos)}
         local tween =  ts:Create(hm, ti, tp)
@@ -192,6 +192,7 @@ local function to(newpos)
         wait(tonumber(tweenspeed))
     end
 end
+
 ff = Instance.new("Part", game.Workspace)
 
 function Float()
