@@ -145,8 +145,8 @@ Main.Toggle({
                 game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               end
           end
-          RunService.Heartbeat:Wait(1)  
       end
+      Wait(1)  
   end
     end,
     killaura = false
