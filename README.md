@@ -1,2 +1,1 @@
-# ScriptZSave
 ### *LUA/LUAU scripts.*
