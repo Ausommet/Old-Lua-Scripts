@@ -241,7 +241,7 @@ local Select = Main.Dropdown({
     
 -- Staff Detection // Re-join On kick
     Players.PlayerAdded:Connect(function(Plr)
-        if Plr:GetRankInGroup(5683480) > 1 or Plr:GetRankInGroup(7171494) > 1 or Plr:GetRankInGroup(5928691) > 1 or Plr:GetRankInGroup(5754032) > 5 then 
+        if Plr:GetRankInGroup(5683480) > 1 or Plr:GetRankInGroup(7171494) > 0 or Plr:GetRankInGroup(5928691) > 0 or Plr:GetRankInGroup(5754032) > 5 then 
                         Teleport()
                     end
                 end)
