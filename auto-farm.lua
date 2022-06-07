@@ -140,7 +140,7 @@ Main.Toggle({
       while killaura do
         for Index, Value in next, workspace.Mobs:GetChildren() do
             if workspace.Mobs:FindFirstChild(Value.Name) and workspace.Mobs[Value.Name]:FindFirstChild('Head') then
-              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < 100  then 
+              if (Value['Head'].Position - workspace[Client]['Head'].Position).magnitude < 50  then 
                 game:GetService("ReplicatedStorage").ChangeWeld:FireServer("One-Handed Held", "RightLowerArm")
                 game:GetService("ReplicatedStorage").DamageMob:FireServer(workspace.Mobs[Value.Name].Humanoid, false, workspace[Client].Sword.Middle)
               end
