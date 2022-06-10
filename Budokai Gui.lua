@@ -65,7 +65,7 @@ end
 
 local function Quest()
     for i, V in pairs(workspace.Core.InteractZones:GetChildren()) do
-        if string.find(V.Name, 'QuestBoard') then
+        if string.find(V.Name, 'QuestBoard') and not table.find(Quests, V.Name) then
             table.insert(Quests, V.Name)
         end
     end
@@ -82,6 +82,7 @@ Main.Toggle({
     end
         while auto_punch do
             game:GetService("ReplicatedStorage").Core.Events.CombatEvents.Attack.BasicAttack:FireServer('RegularAttack')
+            game:GetService("ReplicatedStorage").Core.Events.CharacterEvents.Other.KnockAction:FireServer(workspace.SpawnedCharacters[Mob], 'Grip')
             Wait(0.2)
         end
 
@@ -90,7 +91,7 @@ Main.Toggle({
 })
 
 Main.Toggle({
-    Text= 'Auto Farm',
+    Text= 'Teleport To Mob',
     Callback = function(Value)
         if Value then
             autofarm = true
@@ -99,7 +100,7 @@ Main.Toggle({
           end
         while autofarm do
             wait(0.1)
-            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame + Vector3.new(1,0,0)
+            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame + Vector3.new(-1,0,0)
         end
 end,
 autofarm = false
@@ -123,21 +124,11 @@ local Select_mob = Main.Dropdown({
     })
 
 
- Main.Toggle({
-        Text = 'Auto Quest',
-        Callback = function(Value)
-            if Value then 
-                auto_quest = true
-        else
-            auto_quest = false
-        end
-            while auto_quest do
+ Main.Button({
+        Text = 'Give Quest',
+        Callback = function()
                 game:GetService("ReplicatedStorage").Core.Events.InteractEvents.Select:FireServer(workspace.Core.InteractZones[Quest], 'Yes')
-                Wait(5)
-            end
-    
         end,
-        auto_quest = false
     })
 
 local quests = Main.Dropdown({
