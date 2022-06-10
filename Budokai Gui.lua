@@ -100,7 +100,7 @@ Main.Toggle({
           end
         while autofarm do
             wait(0.1)
-            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame + Vector3.new(-1,0,0)
+            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame
         end
 end,
 autofarm = false
