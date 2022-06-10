@@ -82,7 +82,7 @@ Main.Toggle({
     end
         while auto_punch do
             game:GetService("ReplicatedStorage").Core.Events.CombatEvents.Attack.BasicAttack:FireServer('RegularAttack')
-            RunService.Heartbeat:Wait()
+            Wait(0.2)
         end
 
     end,
@@ -94,13 +94,12 @@ Main.Toggle({
     Callback = function(Value)
         if Value then
             autofarm = true
-            game:GetService("ReplicatedStorage").Core.Events.CombatEvents.Other.LockOnEvent:FireServer(workspace.SpawnedCharacters[Mob])
           else
             autofarm = false
           end
         while autofarm do
-            RunService.Heartbeat:Wait()
-            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame + Vector3.new(0,0,-5)
+            wait(0.1)
+            game.workspace.SpawnedCharacters[Client].HumanoidRootPart.CFrame = game.workspace.SpawnedCharacters[Mob].HumanoidRootPart.CFrame + Vector3.new(1,0,0)
         end
 end,
 autofarm = false
