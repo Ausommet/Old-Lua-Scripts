@@ -45,10 +45,6 @@ local Main = UI.New({
 	Title = "Main"
 })
 
-local stat_changer = UI.New({
-	Title = "Stat Changer"
-})
-
 local Misc= UI.New({
 	Title = "Misc"
 })
@@ -276,32 +272,7 @@ Main.Button({
 		Select:SetOptions(Mobs)
 	end,
 }) 
---Stat-Changer 
-stat_changer.Dropdown({
-	Text = "Select Stat to change",
-	Callback = function(value)
-		a = value
-	end,
-	Options = {"Vitality", "Strength", "Agility", "Defense", "Luck"}
-})
 
-stat_changer.TextField({
-	Text = "Set Value",
-	Callback = function(value)
-		b = value
-	end,
-	Menu = {
-		Info = function(self)
-			UI.Banner({
-				Text = "Set to negative to gain points, if you want god-mode set Vitality to -20000 (after level 200+ you will have to reduce it even more)"})end}
-})
-
-stat_changer.Button({
-	Text = "Change Stat",
-	Callback = function()
-		print(game:GetService("ReplicatedStorage").StatsEvent:FireServer(a, tonumber(b)))
-	end
-})
 --//Misc
 Misc.Toggle({
 	Text = "Material Auto-Farm",
