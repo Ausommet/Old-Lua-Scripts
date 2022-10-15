@@ -1,0 +1,1 @@
+###  For the Pickup to work, you need to kill a mob first then press the button, no issues appear afterwards!

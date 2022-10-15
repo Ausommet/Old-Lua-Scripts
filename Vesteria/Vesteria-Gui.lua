@@ -15,7 +15,7 @@ local Page = UI.New({
 Page.Button({
     Text = "Kill Aura & Godmode",
     Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/5cc4ecdcce1f0d196a225bc96dd6a3cc30313ab5.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/Vesteria/5cc4ecdcce1f0d196a225bc96dd6a3cc30313ab5.lua'))()
     end,
     Menu = {
         Info = function(self)
@@ -29,7 +29,7 @@ Page.Button({
 Page.Button({
     Text = "Auto Pickup",
     Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/4fc6c3b0420bf3558138ef3f61473b2d8e3a55b8.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/Vesteria/4fc6c3b0420bf3558138ef3f61473b2d8e3a55b8.lua'))()
     end,
     Menu = {
         Info = function(self)
