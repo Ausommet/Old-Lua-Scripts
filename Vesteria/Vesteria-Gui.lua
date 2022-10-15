@@ -1,7 +1,7 @@
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local UI = Material.Load({
-    Title = "ZZZZ Vesteria | by Z44_X",
+    Title = "esteria",
     Style = 3,
     SizeX = 300,
     SizeY = 115,
