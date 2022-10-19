@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ausommet/ScriptZSave/main/UILib")) ()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/Ui's/UILib.lua")) ()
 
 local window = library.initiate("ZZZZ Hub by Z44_X", {
     default = UDim2.new(0, 500, 0, 500),
