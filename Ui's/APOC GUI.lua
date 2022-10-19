@@ -1383,18 +1383,6 @@ modificationsection.button("Neon Vehicle", function(bool)
     fireserver("ChangeParent", current:FindFirstChild("ArmorSkirt"), current.Essentials.Color)
 end, true)
 
---scripts
-local scriptstab = window.category("Scripts")
-local scriptssection = scriptstab.section("Scripts")
-
-scriptssection.button("Apoc X (Better Aimbot)", function(bool)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Ausommet/ScriptZSave/main/Universal%20Aimbot", true))()
-end, true)
-
-scriptssection.button("Apoc Hub", function(bool)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Ausommet/ScriptZSave/main/Old_Patched", true))()
-end, true)
-
 --skin
 local skin = window.category("Skins")
 local skingiver = skin.section("Skin Giver")
