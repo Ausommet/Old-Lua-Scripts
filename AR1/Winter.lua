@@ -6,20 +6,13 @@ local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))
 local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
 
 local Window = Library:CreateWindow({
-    -- Set Center to true if you want the menu to appear in the center
-    -- Set AutoShow to true if you want the menu to appear when it is created
-    -- Position and Size are also valid options here
-    -- but you do not need to define them unless you are changing them :)
-
     Title = 'AR1 - Winter',
     Center = true, 
     AutoShow = true,
 })
 
--- You do not have to set your tabs & groups up this way, just a prefrence.
 local Tabs = {
-    -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'),
+    Main = Window:AddTab('Local'),
     Players = Window:AddTab('Players'),
     Server = Window:AddTab('Server'),
     Vehicles = Window:AddTab('Vehicles'),
@@ -29,262 +22,347 @@ local Tabs = {
     
 }
 
--- Groupbox and Tabbox inherit the same functions
--- except Tabboxes you have to call the functions on a tab (Tabbox:AddTab(name))
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+--Main Tab UI Setup
+local Main1 = Tabs.Main:AddLeftGroupbox('LocalPlayer')
+local Tab1 = Tabs.Main:AddRightTabbox()
+local Tab2 = Tabs.Main:AddLeftTabbox()
+local Main2 = Tab1:AddTab('Bullet Mods')
+local Main3 = Tab2:AddTab('Weapon Mods')
+--Main
 
+-- God Mode 
+Main1:AddToggle('G_M', {
+    Text = 'God Mode',
+    Default = false,})
 
--- Tabboxes are a tiny bit different, but here's a basic example:
---[[
+--Infinite Vitals // Infinite Hunger / Thirst
+Main1:AddToggle('I_V', {
+    Text = 'Infinite Vitals',
+    Default = false,})
 
-local TabBox = Tabs.Main:AddLeftTabbox() -- Add Tabbox on left side
+-- Infinite Stamina 
+Main1:AddToggle('I_S', {
+    Text = 'Infinite Stamina',
+    Default = false,})
 
-local Tab1 = TabBox:AddTab('Tab 1')
-local Tab2 = TabBox:AddTab('Tab 2')
-
--- You can now call AddToggle, etc on the tabs you added to the Tabbox
-]]
-
--- Groupbox:AddToggle
--- Arguments: Index, Options
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'This is a toggle',
-    Default = true, -- Default value (true / false)
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
-})
-
-
--- Fetching a toggle object for later use:
--- Toggles.MyToggle.Value
-
--- Toggles is a table added to getgenv() by the library
--- You index Toggles with the specified index, in this case it is 'MyToggle'
--- To get the state of the toggle you do toggle.Value
-
--- Calls the passed function when the toggle is updated
-Toggles.MyToggle:OnChanged(function()
-    -- here we get our toggle object & then get its value
-    print('MyToggle changed to:', Toggles.MyToggle.Value)
-end)
-
--- This should print to the console: "My toggle state changed! New value: false"
-Toggles.MyToggle:SetValue(false)
-
--- Groupbox:AddButton
--- Arguments: Text, Callback
-
-local MyButton = LeftGroupBox:AddButton('Button', function()
+-- TP Crates
+local tpcrates = Main1:AddButton('TP Crates', function()
     print('You clicked a button!')
 end)
 
--- Button:AddButton
--- Arguments: Text, Callback
--- Adds a sub button to the side of the main button
-
-local MyButton2 = MyButton:AddButton('Sub button', function()
-    print('You clicked a sub button!')
+-- TP Bodies
+local tpbodies = Main1:AddButton('TP Bodies', function()
+    print('You clicked a button!')
 end)
 
--- Button:AddTooltip
--- Arguments: ToolTip
 
-MyButton:AddTooltip('This is a button')
-MyButton2:AddTooltip('This is a sub button')
+--BulletMods // Why are you reading this?
+-- Fire BulletMod
+Main2:AddToggle('Fire', {
+    Text = 'Fire',
+    Default = false,})
 
--- NOTE: You can chain the button methods!
---[[
-    EXAMPLE: 
+-- Sparkle BulletMod
+Main2:AddToggle('Sparkle', {
+    Text = 'Sparkle',
+    Default = false,})
 
-    LeftGroupBox:AddButton('Kill all', Functions.KillAll):AddTooltip('This will kill everyone in the game!')
-        :AddButton('Kick all', Functions.KickAll):AddTooltip('This will kick everyone in the game!')
-]]
+-- RedlightV2 BulletMod
+Main2:AddToggle('Redlight_V2', {
+    Text = 'Redlight V2',
+    Default = false,})
 
--- Groupbox:AddLabel
--- Arguments: Text, DoesWrap
-LeftGroupBox:AddLabel('This is a label')
-LeftGroupBox:AddLabel('This is a label\n\nwhich wraps its text!', true)
+-- Snow BulletMod
+Main2:AddToggle('Snow', {
+    Text = 'Snow',
+    Default = false,})
 
--- Groupbox:AddDivider
--- Arguments: None
-LeftGroupBox:AddDivider()
+-- Tornado BulletMod
+Main2:AddToggle('Tornado', {
+    Text = 'Tornado',
+    Default = false,})
 
--- Groupbox:AddSlider
--- Arguments: Idx, Options
-LeftGroupBox:AddSlider('MySlider', {
-    Text = 'This is my slider!',
+-- Rain BulletMod
+Main2:AddToggle('Rain', {
+    Text = 'Rain',
+    Default = false,})
 
-    -- Text, Default, Min, Max, Rounding must be specified.
-    -- Rounding is the number of decimal places for precision.
+-- Blood BulletMod
+Main2:AddToggle('Blood', {
+    Text = 'Blood',
+    Default = false,})
 
-    -- Example:
-    -- Rounding 0 - 5
-    -- Rounding 1 - 5.1
-    -- Rounding 2 - 5.15
-    -- Rounding 3 - 5.155
+-- Smokey BulletMod
+Main2:AddToggle('Smokey', {
+    Text = 'Smokey',
+    Default = false,})
 
-    Default = 0,
-    Min = 0,
-    Max = 5,
-    Rounding = 1,
+-- SmokeyV2 BulletMod
+Main2:AddToggle('Smokey_V2', {
+    Text = 'Smokey V2',
+    Default = false,})
 
-    Compact = false, -- If set to true, then it will hide the label
+-- Redlight BulletMod
+Main2:AddToggle('Redlight', {
+    Text = 'Red Light',
+    Default = false,})
+
+-- Bluelight BulletMod
+Main2:AddToggle('Bluelight', {
+    Text = 'Blue Light',
+    Default = false,})
+
+-- Greenlight BulletMod
+Main2:AddToggle('Greenlight', {
+    Text = 'Green Light',
+    Default = false,})
+
+--Weapon Mods
+-- Infinite Ammo // Infinite Ammo
+Main3:AddToggle('I_A', {
+    Text = 'Infinite Ammo',
+    Default = false,})
+
+-- Machine Gun // Shoots Really Fast
+Main3:AddToggle('M_G', {
+    Text = 'Machine Gun',
+    Default = false,})
+
+-- Slow Gun // Slows Really Slowly
+Main3:AddToggle('S_G', {
+    Text = 'Slow Gun',
+    Default = false,})
+
+-- Break Weapon // Breaks weapon
+Main3:AddToggle('B_W', {
+    Text = 'Break Weapon',
+    Default = false,})
+
+-- No Recoil // Self-explanatory
+Main3:AddToggle('N_R', {
+    Text = 'No Recoil',
+    Default = false,})
+
+-- No Spread // Self-explanatory
+Main3:AddToggle('N_S', {
+    Text = 'No Spread',
+    Default = false,})
+
+-- Players Tab UI Setup
+local Players1 = Tabs.Players:AddLeftGroupbox('Players')
+local TabP1 = Tabs.Players:AddRightTabbox()
+local TabP2 = Tabs.Players:AddLeftTabbox()
+local TabP3 = Tabs.Players:AddRightTabbox()
+local Players2 = TabP1:AddTab('Teleport')
+local Players3 = TabP2:AddTab('Stats')
+local Players4 = TabP2:AddTab('Miscs')
+
+
+-- Players  // Why are you even here?
+
+-- Select Player For Giving stuff / stats 
+Players1:AddDropdown('Select_Player_G', {
+    Values = { 'This', 'is', 'a', 'All' },
+    Default = 1, 
+    Multi = false, 
+    Text = 'Select Player',
 })
 
--- Options is a table added to getgenv() by the library
--- You index Options with the specified index, in this case it is 'MySlider'
--- To get the value of the slider you do slider.Value
+-- For Selected Player Give:  God Mode
+Players1:AddToggle('S_G_M', {
+    Text = 'Give God Mode',
+    Default = false,})
 
-local Number = Options.MySlider.Value
-Options.MySlider:OnChanged(function()
-    print('MySlider was changed! New value:', Options.MySlider.Value)
+-- For Selected Player Give: Infinite Vitals // Infinite Hunger / Thirst
+Players1:AddToggle('S_I_V', {
+    Text = 'Give Infinite Vitals',
+    Default = false,})
+
+-- For Selected Player Give: Infinite Stamina
+Players1:AddToggle('S_I_S', {
+    Text = 'Give Infinite Stamina',
+    Default = false,})
+
+-- Punish Player
+local punishplr = Players1:AddButton('Punish Player', function()
+    print('You clicked a button!')
 end)
 
--- This should print to the console: "MySlider was changed! New value: 3"
-Options.MySlider:SetValue(3)
+-- Unpunish Player
+local unpunishplr = Players1:AddButton('Unpunish Player', function()
+    print('You clicked a button!')
+end)
 
--- Groupbox:AddInput
--- Arguments: Idx, Info
-LeftGroupBox:AddInput('MyTextbox', {
-    Default = 'My textbox!',
-    Numeric = false, -- true / false, only allows numbers
-    Finished = false, -- true / false, only calls callback when you press enter
+-- Rocket Player
+local rocketplr = Players4:AddButton('Rocket Player', function()
+    print('You clicked a button!')
+end)
 
-    Text = 'This is a textbox',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+-- OpenInventory Player
+local openinvplr = Players4:AddButton('Open Inventory', function()
+    print('You clicked a button!')
+end)
 
-    Placeholder = 'Placeholder text', -- placeholder text when the box is empty
+-- Invisible Player
+local invisibleplr = Players1:AddButton('Invisible Player', function()
+    print('You clicked a button!')
+end)
+
+-- Visible Player
+local visibleplr = Players1:AddButton('Visible Player', function()
+    print('You clicked a button!')
+end)
+
+-- Lag Player
+local lagplr = Players4:AddButton('Lag Player', function()
+    print('You clicked a button!')
+end)
+
+-- Blind Zombies
+local blindzombies = Players4:AddButton('Blind Zombies', function()
+    print('You clicked a button!')
+end)
+
+-- Nuke Player
+local nukeplr = Players4:AddButton('Nuke Player', function()
+    print('You clicked a button!')
+end)
+
+-- Kick Player
+local kickplr = Players1:AddButton('Kick Player', function()
+    print('You clicked a button!')
+end)
+
+-- Ban Player
+local banplr = Players1:AddButton('Ban Player', function()
+    print('You clicked a button!')
+end)
+
+-- Select Player For Teleporting
+Players2:AddDropdown('Select_Player_T', {
+    Values = { 'This', 'is', 'a', 'All' },
+    Default = 1, 
+    Multi = false, 
+    Text = 'Select Player',
+})
+
+-- Bring Player
+
+local bringplr = Players2:AddButton('Bring Player', function()
+    print('You clicked a button!')
+end)
+
+-- Goto Player Player
+
+local gotoplr = Players2:AddButton('Goto Player', function()
+    print('You clicked a button!')
+end)
+
+-- Bring All
+local bringall = Players2:AddButton('Bring All', function()
+    print('You clicked a button!')
+end)
+
+
+-- Select Place For Teleporting
+Players2:AddDropdown('Select_Place', {
+    Values = { 'This', 'is', 'a', 'All' },
+    Default = 1, 
+    Multi = false, 
+    Text = 'Select Place',
+})
+
+-- Goto Place
+
+local gotoplace = Players2:AddButton('Goto', function()
+    print('You clicked a button!')
+end)
+
+-- Set Days Survived
+Players3:AddInput('set_DS', {
+    Default = ' ',
+    Numeric = true, -- true / false, only allows numbers
+    Finished = true, -- true / false, only calls callback when you press enter
+
+    Text = 'Days Survived',
+
+    Placeholder = 'Enter Days', -- placeholder text when the box is empty
     -- MaxLength is also an option which is the max length of the text
 })
 
-Options.MyTextbox:OnChanged(function()
-    print('Text updated. New text:', Options.MyTextbox.Value)
+Options.set_DS:OnChanged(function()
+    print('Days Survived: ', Options.set_DS.Value)
 end)
 
--- Groupbox:AddDropdown
--- Arguments: Idx, Info
+--Set Zombie Kills
 
-LeftGroupBox:AddDropdown('MyDropdown', {
-    Values = { 'This', 'is', 'a', 'dropdown' },
-    Default = 1, -- number index of the value / string
-    Multi = false, -- true / false, allows multiple choices to be selected
+Players3:AddInput('set_ZK', {
+    Default = ' ',
+    Numeric = true, -- true / false, only allows numbers
+    Finished = true, -- true / false, only calls callback when you press enter
 
-    Text = 'A dropdown',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+    Text = 'Zombie Kills',
+
+    Placeholder = 'Enter Days', -- placeholder text when the box is empty
+    -- MaxLength is also an option which is the max length of the text
 })
 
-Options.MyDropdown:OnChanged(function()
-    print('Dropdown got changed. New value:', Options.MyDropdown.Value)
+Options.set_ZK:OnChanged(function()
+    print('Zombie Kills:', Options.set_ZK.Value)
 end)
 
-Options.MyDropdown:SetValue('This')
+--Set Player Kills
 
--- Multi dropdowns
-LeftGroupBox:AddDropdown('MyMultiDropdown', {
-    -- Default is the numeric index (e.g. "This" would be 1 since it if first in the values list)
-    -- Default also accepts a string as well
+Players3:AddInput('set_PK', {
+    Default = ' ',
+    Numeric = true, -- true / false, only allows numbers
+    Finished = true, -- true / false, only calls callback when you press enter
 
-    -- Currently you can not set multiple values with a dropdown
+    Text = 'Player Kills',
 
-    Values = { 'This', 'is', 'a', 'dropdown' },
-    Default = 1, 
-    Multi = true, -- true / false, allows multiple choices to be selected
-
-    Text = 'A dropdown',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+    Placeholder = 'Enter Days', -- placeholder text when the box is empty
+    -- MaxLength is also an option which is the max length of the text
 })
 
-Options.MyMultiDropdown:OnChanged(function()
-    -- print('Dropdown got changed. New value:', )
-    print('Multi dropdown got changed:')
-    for key, value in next, Options.MyMultiDropdown.Value do
-        print(key, value) -- should print something like This, true
-    end
+Options.set_PK:OnChanged(function()
+    print('Player Kills:', Options.set_PK.Value)
 end)
 
-Options.MyMultiDropdown:SetValue({
-    This = true,
-    is = true,
-})
-
--- Label:AddColorPicker
--- Arguments: Idx, Info
-
--- You can also ColorPicker & KeyPicker to a Toggle as well
-
-LeftGroupBox:AddLabel('Color'):AddColorPicker('ColorPicker', {
-    Default = Color3.new(0, 1, 0), -- Bright green
-    Title = 'Some color', -- Optional. Allows you to have a custom color picker title (when you open it)
-})
-
-Options.ColorPicker:OnChanged(function()
-    print('Color changed!', Options.ColorPicker.Value)
-end)
-
-Options.ColorPicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
-
-LeftGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
-    -- SyncToggleState only works with toggles. 
-    -- It allows you to make a keybind which has its state synced with its parent toggle
-
-    -- Example: Keybind which you use to toggle flyhack, etc.
-    -- Changing the toggle disables the keybind state and toggling the keybind switches the toggle state
-
-    Default = 'MB2', -- String as the name of the keybind (MB1, MB2 for mouse buttons)  
-    SyncToggleState = false, 
 
 
-    -- You can define custom Modes but I have never had a use for it.
-    Mode = 'Toggle', -- Modes: Always, Toggle, Hold
 
-    Text = 'Auto lockpick safes', -- Text to display in the keybind menu
-    NoUI = false, -- Set to true if you want to hide from the Keybind menu,
-})
 
--- OnClick is only fired when you press the keybind and the mode is Toggle
--- Otherwise, you will have to use Keybind:GetState()
-Options.KeyPicker:OnClick(function()
-    print('Keybind clicked!', Options.KeyPicker.Value)
-end)
 
-task.spawn(function()
-    while true do
-        wait(1)
 
-        -- example for checking if a keybind is being pressed
-        local state = Options.KeyPicker:GetState()
-        if state then
-            print('KeyPicker is being held down')
-        end
 
-        if Library.Unloaded then break end
-    end
-end)
 
-Options.KeyPicker:SetValue({ 'MB2', 'Toggle' }) -- Sets keybind to MB2, mode to Hold
 
--- Library functions
--- Sets the watermark visibility
-Library:SetWatermarkVisibility(false)
 
--- Sets the watermark text
-Library:SetWatermark('This is a really long watermark to text the resizing')
+--[[
 
-Library.KeybindFrame.Visible = true; -- todo: add a function for this
+    local MyButton2 = MyButton:AddButton('Sub button', function()
+    print('You clicked a sub button!')  end)
+--]]
 
-Library:OnUnload(function()
-    print('Unloaded!')
-    Library.Unloaded = true
-end)
 
--- UI Settings
+
+
+
+
+-- Players Section
+-- Server Section
+-- Vehicles Section
+-- Skins Section 
+-- Clothing Section
+
+--UI Settings
 local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
 
 
--- I set NoUI so it does not show up in the keybinds menu
+--NoUI so it does not show up in the keybinds menu
 MenuGroup:AddButton('Unload', function() Library:Unload() end)
 MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'End', NoUI = true, Text = 'Menu keybind' }) 
-
-Library.ToggleKeybind = Options.MenuKeybind -- Allows you to have a custom keybind for the menu
+Library.ToggleKeybind = Options.MenuKeybind
 
 -- Addons:
 -- SaveManager (Allows you to have a configuration system)
@@ -317,3 +395,13 @@ ThemeManager:ApplyToTab(Tabs['UI Settings'])
 
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config 
 -- which has been marked to be one that auto loads!
+
+-- Set Watermark
+Library:SetWatermarkVisibility(true)
+
+-- Sets the watermark text
+Library:SetWatermark('Made with ❤ by Ausommet')
+
+--Hides Watermark after 10s
+Wait(5)
+Library:SetWatermarkVisibility(false)
