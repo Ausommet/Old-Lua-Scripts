@@ -11,7 +11,7 @@ local Window = Library:CreateWindow({
     -- Position and Size are also valid options here
     -- but you do not need to define them unless you are changing them :)
 
-    Title = 'Example menu',
+    Title = 'AR1 - Winter',
     Center = true, 
     AutoShow = true,
 })
@@ -19,13 +19,20 @@ local Window = Library:CreateWindow({
 -- You do not have to set your tabs & groups up this way, just a prefrence.
 local Tabs = {
     -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'), 
+    Main = Window:AddTab('Main'),
+    Players = Window:AddTab('Players'),
+    Server = Window:AddTab('Server'),
+    Vehicles = Window:AddTab('Vehicles'),
+    Skins = Window:AddTab('Skins'),
+    Clothing = Window:AddTab('Clothing'),
     ['UI Settings'] = Window:AddTab('UI Settings'),
+    
 }
 
 -- Groupbox and Tabbox inherit the same functions
 -- except Tabboxes you have to call the functions on a tab (Tabbox:AddTab(name))
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+
 
 -- Tabboxes are a tiny bit different, but here's a basic example:
 --[[
@@ -257,7 +264,7 @@ Options.KeyPicker:SetValue({ 'MB2', 'Toggle' }) -- Sets keybind to MB2, mode to 
 
 -- Library functions
 -- Sets the watermark visibility
-Library:SetWatermarkVisibility(true)
+Library:SetWatermarkVisibility(false)
 
 -- Sets the watermark text
 Library:SetWatermark('This is a really long watermark to text the resizing')
@@ -271,6 +278,7 @@ end)
 
 -- UI Settings
 local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
+
 
 -- I set NoUI so it does not show up in the keybinds menu
 MenuGroup:AddButton('Unload', function() Library:Unload() end)
