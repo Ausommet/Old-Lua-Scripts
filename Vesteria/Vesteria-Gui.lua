@@ -3,7 +3,7 @@ repeat wait() until game:IsLoaded()
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ausommet/Lua-Scripts/main/Ui's/Module.lua"))()
 
 local UI = Material.Load({
-    Title = 'X',
+    Title = 'Vesteria - Winter',
     Style = 3,
     SizeX = 300,
     SizeY = 150,
