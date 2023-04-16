@@ -20,7 +20,7 @@ local Tabs = {
 local Main1 = Tabs.Main:AddLeftGroupbox('Spam Abilities')
 
 
---imports
+--Game Services
 local RunService = game:GetService("RunService")
 
 Main1:AddToggle('SA', {
@@ -33,6 +33,7 @@ Main1:AddToggle('SA', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].CastSkill:FireServer(1)
             end
     end)
+
 Main1:AddToggle('SA2', {
     Text = 'Spam Ability 2',
     Default = false,})
@@ -43,6 +44,7 @@ Main1:AddToggle('SA2', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].CastSkill:FireServer(2)
             end
     end)
+
 Main1:AddToggle('SA3', {
     Text = 'Spam Ability 3',
     Default = false,})
@@ -53,6 +55,7 @@ Main1:AddToggle('SA3', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].CastSkill:FireServer(3)
             end
     end)
+
 Main1:AddToggle('SA4', {
     Text = 'Spam Ability 4',
     Default = false,})
@@ -74,6 +77,7 @@ Main1:AddToggle('SA5', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].CastSkill:FireServer(5)
             end
     end)
+
 Main1:AddToggle('SA6', {
     Text = 'Spam Ability 6',
     Default = false,})
@@ -95,6 +99,7 @@ Main1:AddToggle('G_M', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].STLevelModify:FireServer(3, "Sword", 60)
             end
     end)
+
 Main1:AddToggle('AA', {
     Text = 'Auto Attack',
     Default = false,})
@@ -105,6 +110,7 @@ Main1:AddToggle('AA', {
                 game:GetService("ReplicatedStorage").RmEvent["Status/Data"].Attack:FireServer()
             end
     end)
+
 local GB = Main1:AddButton('Give Best Sword', function()
     game:GetService("ReplicatedStorage").RmEvent["Status/Data"].STLevelModify:FireServer(2, "Sword", 59)
     end)
@@ -114,8 +120,7 @@ local GB2 = Main1:AddButton('Give Best Hammer', function()
     end)
 
 local GINF = Main1:AddButton('Give INF Stats', function()
-game:GetService("ReplicatedStorage").RmEvent["Status/Data"].Absorb:FireServer(1.e+999, 1.e+999, 1.e+999, "xD")
-    game:GetService("ReplicatedStorage").RmEvent["Status/Data"].STLevelModify:FireServer(2, "Sword", 59)
+    game:GetService("ReplicatedStorage").RmEvent["Status/Data"].Absorb:FireServer(1.e+999, 1.e+999, 1.e+999, "xD")
     end)
 
 -- UI Settings
